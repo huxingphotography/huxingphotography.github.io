@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hu Xing Photography. Documentary and portrait photographer based on film. 胡星摄影，专注于人文纪实与人像的胶片摄影师。">
     <title>Hu Xing Photography | 胡星摄影</title>
-    <!-- 引入全套高级字体 -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Noto+Sans+SC:wght@300;400&family=Noto+Sans+TC:wght@300;400&family=Noto+Serif+SC:wght@300;400;700&family=Noto+Serif+TC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- 引入全套高级字体：全面拥抱 Serif (衬线/宋体) 以获得极致典雅的画廊感 -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Noto+Serif+SC:wght@300;400;700&family=Noto+Serif+TC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         /* 基础变量设置（白昼模式） */
         :root {
@@ -16,7 +16,7 @@
             --border-color: #E0E0E0;
             --slider-bg: #EAEAEA;
             --font-title: 'Playfair Display', 'Noto Serif SC', 'Noto Serif TC', serif;
-            --font-body: 'Montserrat', 'Noto Sans SC', 'Noto Sans TC', sans-serif;
+            --font-body: 'Montserrat', 'Noto Serif SC', 'Noto Serif TC', serif; /* 正文也换成了宋体/衬线体 */
             --transition: all 0.4s ease;
         }
 
@@ -24,7 +24,7 @@
         [data-theme="dark"] {
             --bg-color: #121212;
             --text-color: #F0F0F0;
-            --secondary-text: #A0A0A0;
+            --secondary-text: #999999;
             --border-color: #333333;
             --slider-bg: #2A2A2A;
         }
@@ -35,16 +35,16 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-body);
-            font-weight: 300; 
-            letter-spacing: 0.5px; 
-            line-height: 1.9;
+            font-weight: 300; /* 使用轻量级字体，带来极致空气感 */
+            letter-spacing: 0.8px; /* 稍微增加字间距 */
+            line-height: 2.0; /* 增加行高，提升阅读的诗意感 */
             transition: var(--transition);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden; 
         }
 
         /* 强制覆盖标题字体 */
-        h1, h2, h3, .serif { font-family: var(--font-title); font-weight: 400; letter-spacing: 1px; }
+        h1, h2, h3, .serif { font-family: var(--font-title); font-weight: 400; letter-spacing: 1.5px; }
 
         /* 导航栏 */
         header {
@@ -62,7 +62,7 @@
 
         .logo { font-size: 1.5rem; letter-spacing: 2px; cursor: pointer; }
 
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; font-family: 'Montserrat', 'Noto Serif SC', serif; }
         .nav-links li { cursor: pointer; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
         .nav-links li:hover { color: var(--secondary-text); }
         .nav-links li.active { border-bottom: 1px solid var(--text-color); }
@@ -80,6 +80,7 @@
             align-items: center;
             width: 140px; 
             transition: var(--transition);
+            font-family: 'Montserrat', 'Noto Serif SC', serif;
         }
         
         .lang-slider {
@@ -118,7 +119,7 @@
         }
         .theme-btn svg {
             width: 20px; height: 20px;
-            stroke: var(--text-color); stroke-width: 1.5;
+            stroke: var(--text-color); stroke-width: 1.2;
             transition: transform 0.5s ease, opacity 0.3s ease;
         }
         .theme-btn:hover svg { opacity: 0.6; transform: rotate(15deg); }
@@ -131,16 +132,17 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* 首页介绍版块 */
-        .intro-container { display: flex; flex-direction: column; gap: 3rem; max-width: 800px; margin: 0 auto; }
-        .bio p { font-size: 1.05rem; color: var(--secondary-text); margin-bottom: 1.5rem; text-align: justify; }
-        .info-block { border-top: 1px solid var(--border-color); padding-top: 2rem; }
+        .intro-container { display: flex; flex-direction: column; gap: 3.5rem; max-width: 800px; margin: 0 auto; }
+        .bio h2 { font-size: 2.2rem; margin-bottom: 2rem; }
+        .bio p { font-size: 1.05rem; color: var(--secondary-text); margin-bottom: 1.8rem; text-align: justify; text-justify: inter-ideograph; }
+        .info-block { border-top: 1px solid var(--border-color); padding-top: 2.5rem; }
         .info-block h3 { font-size: 1.2rem; margin-bottom: 1.5rem; letter-spacing: 1px; }
         .info-block ul { list-style: none; color: var(--secondary-text); font-size: 0.95rem; }
         .info-block li { margin-bottom: 0.8rem; }
         .award-year { font-weight: 400; color: var(--text-color); margin-top: 1.5rem; margin-bottom: 0.5rem; display: block; font-family: var(--font-title); font-size: 1.2rem; }
 
         /* 画廊版块与主题分类 */
-        .gallery-category { margin-bottom: 2.5rem; margin-top: 1rem; border-left: 3px solid var(--text-color); padding-left: 1.2rem; }
+        .gallery-category { margin-bottom: 2.5rem; margin-top: 1rem; border-left: 2px solid var(--text-color); padding-left: 1.5rem; }
         .gallery-category h3 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 0.3rem; }
         .category-desc { font-size: 0.85rem; color: var(--secondary-text); letter-spacing: 1px; }
 
@@ -191,7 +193,7 @@
 
         /* 页脚 */
         footer { 
-            width: 100%; display: flex; justify-content: center; align-items: center;
+            width: 100%; display: flex; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif;
             padding: 3rem 1rem; font-size: 0.8rem; color: var(--secondary-text); 
             letter-spacing: 1.5px; clear: both; border-top: 1px solid var(--border-color); margin-top: 2rem;
         }
@@ -202,47 +204,32 @@
         }
 
         /* =========================================
-           移动端终极完美适配方案 (解决重叠的全新双层网格)
+           移动端终极完美适配方案 (解决重叠与被遮挡问题)
            ========================================= */
         @media (max-width: 768px) {
-            /* 1. 将导航栏改为 Grid 布局，完美划分区域 */
+            /* 1. 双层分离网格 */
             .nav-container { 
                 display: grid; 
-                grid-template-columns: 1fr auto; /* 左边 Logo，右边控制台 */
-                row-gap: 1.2rem; /* 上下行间距 */
+                grid-template-columns: 1fr auto; 
+                row-gap: 1.2rem; 
                 padding: 1.2rem 1.5rem; 
             }
+            .logo { grid-column: 1 / 2; align-self: center; font-size: 1.35rem; }
+            .controls { grid-column: 2 / 3; align-self: center; gap: 0.8rem; }
+            .nav-links { grid-column: 1 / 3; justify-content: center; gap: 2rem; }
             
-            /* 2. Logo 独占左上角 */
-            .logo { 
-                grid-column: 1 / 2; 
-                align-self: center; 
-                font-size: 1.35rem; /* 稍微缩小一点防止拥挤 */
-            }
+            /* 2. 关键修复：大幅度增加下推距离，确保无论怎样都不挡住标题 */
+            main { margin-top: 160px; padding: 0 1.5rem; }
             
-            /* 3. 控制台独占右上角，彻底抛弃容易重叠的 absolute */
-            .controls { 
-                grid-column: 2 / 3; 
-                align-self: center; 
-                gap: 0.8rem; /* 缩减图标与滑动条的间距 */
-            }
-            
-            /* 4. 导航菜单独占第二行，完美居中 */
-            .nav-links { 
-                grid-column: 1 / 3; 
-                justify-content: center; 
-                gap: 2.5rem; 
-            }
-            
-            /* 其他移动端细节微调 */
-            main { margin-top: 140px; padding: 0 1.5rem; }
+            /* 移动端细节微调 */
+            .bio h2 { font-size: 1.8rem; }
             .contact-container h2 { font-size: 1.8rem; }
             .email-link { font-size: 1.1rem; }
             .gallery-grid { column-count: 1; } 
             .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); }
             
             /* 缩小移动端语言滑动条以留出充足空间 */
-            .lang-switch { width: 110px; }
+            .lang-switch { width: 105px; }
             .lang-option { font-size: 0.65rem; padding: 2px 0; }
         }
     </style>
@@ -251,7 +238,6 @@
 
     <header>
         <div class="nav-container">
-            <!-- 修复了中英文Logo不一致导致移动端溢出的问题 -->
             <div class="logo serif lang-text" onclick="switchTab('home')" data-sc="胡 星" data-tc="胡 星" data-en="HU XING">胡 星</div>
             <ul class="nav-links">
                 <li onclick="switchTab('home')" id="tab-home" class="active lang-text" data-sc="关于" data-tc="關於" data-en="About">关于</li>
@@ -259,7 +245,6 @@
                 <li onclick="switchTab('contact')" id="tab-contact" class="lang-text" data-sc="联系" data-tc="聯繫" data-en="Contact">联系</li>
             </ul>
             <div class="controls">
-                <!-- 主题切换图标 -->
                 <button onclick="toggleTheme()" class="theme-btn" aria-label="Toggle Dark/Light Mode">
                     <svg id="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -277,7 +262,6 @@
                     </svg>
                 </button>
                 
-                <!-- 滑动语言切换条 -->
                 <div class="lang-switch">
                     <div class="lang-slider" id="lang-slider"></div>
                     <div class="lang-option active" id="opt-sc" onclick="setLang('sc', 0)">简</div>
@@ -293,7 +277,7 @@
         <section id="home" class="section active">
             <div class="intro-container">
                 <div class="bio">
-                    <h2 class="serif lang-text" style="margin-bottom: 1.5rem; font-size: 2rem;" data-sc="摄影师简介" data-tc="攝影師簡介" data-en="Biography">摄影师简介</h2>
+                    <h2 class="serif lang-text" data-sc="摄影师简介" data-tc="攝影師簡介" data-en="Biography">摄影师简介</h2>
                     <p class="lang-text" data-sc="我是一名致力于捕捉时代脉搏的摄影师。我的摄影作品常常聚焦于城市人文与人物肖像，力求在快节奏的现代生活中寻找那些静谧而充满力量的瞬间。我试图将城市的烟火气与现代工业化的社会、数字化的生活紧密结合，通过镜头语言，表达人们在喧嚣城市生活中的内心隐喻与深刻思考。" data-tc="我是一名致力於捕捉時代脈搏的攝影師。我的攝影作品常常聚焦於城市人文與人物肖像，力求在快節奏的現代生活中尋找那些靜謐而充滿力量的瞬間。我試圖將城市的煙火氣與現代工業化的社會、數字化的生活緊密結合，透過鏡頭語言，表達人們在喧囂城市生活中的內心隱喻與深刻思考。" data-en="I am a photographer dedicated to capturing the pulse of our times. My work primarily focuses on urban documentary and portraiture, striving to find quiet yet powerful moments amidst the fast-paced modern life. I attempt to closely integrate the raw, vivid essence of city life with our modern industrialized and digitized society. Through the language of the lens, I express the inner metaphors and profound reflections of people living in the urban bustle.">
                         我是一名致力于捕捉时代脉搏的摄影师。我的摄影作品常常聚焦于城市人文与人物肖像，力求在快节奏的现代生活中寻找那些静谧而充满力量的瞬间。我试图将城市的烟火气与现代工业化的社会、数字化的生活紧密结合，通过镜头语言，表达人们在喧嚣城市生活中的内心隐喻与深刻思考。
                     </p>
@@ -346,32 +330,26 @@
                     <img src="photos/Sydney/1%20Threshold%20(Childhood).jpg" alt="Threshold (Childhood) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
                     <div class="gallery-overlay"><span class="gallery-title">Threshold (Childhood)</span></div>
                 </div>
-
                 <div class="gallery-item">
                     <img src="photos/Sydney/2%20The%20Comons%20(Family).jpg" alt="The Comons (Family) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
                     <div class="gallery-overlay"><span class="gallery-title">The Comons (Family)</span></div>
                 </div>
-
                 <div class="gallery-item">
                     <img src="photos/Sydney/3%20Puzzles%20(Learning).jpg" alt="Puzzles (Learning) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
                     <div class="gallery-overlay"><span class="gallery-title">Puzzles (Learning)</span></div>
                 </div>
-
                 <div class="gallery-item">
                     <img src="photos/Sydney/4%20Words%20of%20Life(Poems).jpg" alt="Words of Life (Poems) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
                     <div class="gallery-overlay"><span class="gallery-title">Words of Life (Poems)</span></div>
                 </div>
-
                 <div class="gallery-item">
                     <img src="photos/Sydney/5%20Courage%20(Braving%20the%20Break).jpg" alt="Courage (Braving the Break) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
                     <div class="gallery-overlay"><span class="gallery-title">Courage (Braving the Break)</span></div>
                 </div>
-
                 <div class="gallery-item">
                     <img src="photos/Sydney/6%20Rest%20(Everyday%20Peace).jpg" alt="Rest (Everyday Peace) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
                     <div class="gallery-overlay"><span class="gallery-title">Rest (Everyday Peace)</span></div>
                 </div>
-
                 <div class="gallery-item">
                     <img src="photos/Sydney/7%20The%20Keeper%20(Shelter).jpg" alt="The Keeper (Shelter) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
                     <div class="gallery-overlay"><span class="gallery-title">The Keeper (Shelter)</span></div>
