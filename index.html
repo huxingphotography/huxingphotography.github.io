@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hu Xing Photography. Documentary and portrait photographer based on film. 胡星摄影，专注于人文纪实与人像的胶片摄影师。">
     <title>Hu Xing Photography | 胡星摄影</title>
     <!-- 引入高级感衬线字体 (包含英文字体、简体宋体、繁体宋体) -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Noto+Serif+TC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -99,22 +100,35 @@
         .info-block h3 { font-size: 1.2rem; margin-bottom: 1rem; letter-spacing: 1px; }
         .info-block ul { list-style: none; color: var(--secondary-text); }
         .info-block li { margin-bottom: 0.5rem; }
-        
-        /* 获奖年份特调 */
         .award-year { font-weight: bold; color: var(--text-color); margin-top: 1.2rem; margin-bottom: 0.3rem; display: block; font-family: var(--font-title); font-size: 1.1rem; }
 
-        /* 画廊版块 */
+        /* 画廊版块与主题分类 */
+        .gallery-category { margin-bottom: 2rem; margin-top: 1rem; border-left: 3px solid var(--text-color); padding-left: 1rem; }
+        .gallery-category h3 { font-size: 1.8rem; letter-spacing: 2px; }
+        .category-desc { font-size: 0.9rem; color: var(--secondary-text); margin-top: 0.3rem; letter-spacing: 1px; }
+
         .gallery-grid {
             display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 20px; margin-bottom: 4rem;
         }
+        
+        /* 画廊图片与悬停效果 */
         .gallery-item {
-            position: relative; overflow: hidden; aspect-ratio: 3/2; background-color: var(--border-color);
+            position: relative; overflow: hidden; aspect-ratio: 3/2; background-color: var(--border-color); cursor: pointer;
         }
         .gallery-item img {
-            width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+            width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease;
         }
-        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: #FFFFFF; padding: 20px;
+            opacity: 0; transition: opacity 0.4s ease;
+            display: flex; align-items: flex-end; height: 50%;
+        }
+        .gallery-item:hover img { transform: scale(1.04); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-title { font-family: var(--font-title); font-size: 1.1rem; letter-spacing: 1px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
 
         /* 联系页版块 */
         .contact-container { text-align: center; max-width: 600px; margin: 10vh auto 0; }
@@ -136,6 +150,8 @@
             main { margin-top: 160px; padding: 0 1.5rem 3rem; }
             .contact-container h2 { font-size: 1.8rem; }
             .email-link { font-size: 1.1rem; }
+            /* 手机端默认显示照片标题 */
+            .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); height: 40%; }
         }
     </style>
 </head>
@@ -150,13 +166,10 @@
                 <li onclick="switchTab('contact')" id="tab-contact" class="lang-text" data-sc="联系" data-tc="聯繫" data-en="Contact">联系</li>
             </ul>
             <div class="controls">
-                <!-- 主题切换图标 -->
                 <button onclick="toggleTheme()" class="theme-btn" aria-label="Toggle Dark/Light Mode">
-                    <!-- 月亮图标 (代表点击进入黑夜) -->
                     <svg id="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <!-- 太阳图标 (代表点击进入白昼，默认隐藏) -->
                     <svg id="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: none;">
                         <circle cx="12" cy="12" r="5"></circle>
                         <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -169,14 +182,13 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <!-- 语言切换按钮 -->
                 <button onclick="toggleLang()" id="lang-btn" class="lang-btn">繁</button>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- About Section -->
+        <!-- 关于版块 -->
         <section id="home" class="section active">
             <div class="intro-container">
                 <div class="bio">
@@ -220,20 +232,60 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- 画廊版块 -->
         <section id="gallery" class="section">
-            <div class="gallery-grid">
-                <!-- 替换你自己的照片名称 image1.jpg -->
-                <div class="gallery-item"><img src="image1.jpg" alt="Photography Work 1" onerror="this.src='https://images.unsplash.com/photo-1551641506-ee5bf4cb45f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"></div>
-                <div class="gallery-item"><img src="image2.jpg" alt="Photography Work 2" onerror="this.src='https://images.unsplash.com/photo-1516805362532-3a56cfd770c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"></div>
-                <div class="gallery-item"><img src="image3.jpg" alt="Photography Work 3" onerror="this.src='https://images.unsplash.com/photo-1534008757030-27299c4371b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"></div>
-                <div class="gallery-item"><img src="image4.jpg" alt="Photography Work 4" onerror="this.src='https://images.unsplash.com/photo-1493612276216-ee3925520721?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"></div>
-                <div class="gallery-item"><img src="image5.jpg" alt="Photography Work 5" onerror="this.src='https://images.unsplash.com/photo-1517504734587-2890819debab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"></div>
-                <div class="gallery-item"><img src="image6.jpg" alt="Photography Work 6" onerror="this.src='https://images.unsplash.com/photo-1516108151478-43bb2227d6d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'"></div>
+            
+            <!-- 主题 1：Sydney -->
+            <div class="gallery-category">
+                <h3 class="serif lang-text" data-sc="悉尼 (Sydney)" data-tc="悉尼 (Sydney)" data-en="Sydney">悉尼 (Sydney)</h3>
+                <p class="category-desc lang-text" data-sc="2025 · 悉尼海滩风景 · 彩色负片 · Hasselblad 500C/M" data-tc="2025 · 悉尼海灘風景 · 彩色負片 · Hasselblad 500C/M" data-en="2025 · Sydney Beach Landscape · Color Negative Film · Hasselblad 500C/M">2025 · 悉尼海滩风景 · 彩色负片 · Hasselblad 500C/M</p>
             </div>
+
+            <!-- Sydney 组图 (注：%20 代表代码里文件名的空格，必须保留) -->
+            <div class="gallery-grid">
+                
+                <div class="gallery-item">
+                    <!-- img src 指向你在 github 建立的具体文件夹路径。alt 标签兼顾中英双语，SEO 拉满 -->
+                    <img src="photos/Sydney/1%20Threshold%20(Childhood).jpg" alt="Threshold (Childhood) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
+                    <div class="gallery-overlay"><span class="gallery-title">Threshold (Childhood)</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="photos/Sydney/2%20The%20Comons%20(Family).jpg" alt="The Comons (Family) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
+                    <div class="gallery-overlay"><span class="gallery-title">The Comons (Family)</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="photos/Sydney/3%20Puzzles%20(Learning).jpg" alt="Puzzles (Learning) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
+                    <div class="gallery-overlay"><span class="gallery-title">Puzzles (Learning)</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="photos/Sydney/4%20Words%20of%20Life(Poems).jpg" alt="Words of Life (Poems) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
+                    <div class="gallery-overlay"><span class="gallery-title">Words of Life (Poems)</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="photos/Sydney/5%20Courage%20(Braving%20the%20Break).jpg" alt="Courage (Braving the Break) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
+                    <div class="gallery-overlay"><span class="gallery-title">Courage (Braving the Break)</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="photos/Sydney/6%20Rest%20(Everyday%20Peace).jpg" alt="Rest (Everyday Peace) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
+                    <div class="gallery-overlay"><span class="gallery-title">Rest (Everyday Peace)</span></div>
+                </div>
+
+                <div class="gallery-item">
+                    <img src="photos/Sydney/7%20The%20Keeper%20(Shelter).jpg" alt="The Keeper (Shelter) - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M. 2025年悉尼人文纪实摄影，彩色负片，悉尼海滩风景，哈苏 - 胡星摄影">
+                    <div class="gallery-overlay"><span class="gallery-title">The Keeper (Shelter)</span></div>
+                </div>
+
+            </div>
+            <!-- 未来如果有新的系列（比如 Paris），只需在这里把上面的 <div class="gallery-category">... 到 </div> 的代码复制一份，并修改图片路径即可 -->
+
         </section>
 
-        <!-- Contact Section -->
+        <!-- 联系页版块 -->
         <section id="contact" class="section">
             <div class="contact-container">
                 <h2 class="serif lang-text" data-sc="期待与您的合作" data-tc="期待與您的合作" data-en="Let's create together">期待与您的合作</h2>
@@ -260,31 +312,28 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 黑夜/白昼模式切换 (使用极简图标)
+        // 黑夜/白昼模式切换
         let isDark = false;
         function toggleTheme() {
             isDark = !isDark;
             document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
             
-            // 切换 SVG 图标的显示与隐藏
+            // 切换 SVG 图标
             document.getElementById('moon-icon').style.display = isDark ? 'none' : 'block';
             document.getElementById('sun-icon').style.display = isDark ? 'block' : 'none';
         }
 
-        // 简、繁、英 三语切换逻辑
-        const langMap = ['sc', 'tc', 'en']; // 定义语言数组
-        const nextLangLabel = ['繁', 'EN', '简']; // 按钮上提示下一个将要切换的语言
-        let currentLangIdx = 0; // 默认初始状态为 0 (sc 简体)
+        // 简、繁、英 三语切换
+        const langMap = ['sc', 'tc', 'en'];
+        const nextLangLabel = ['繁', 'EN', '简'];
+        let currentLangIdx = 0; 
 
         function toggleLang() {
-            // 点击后，索引递增，逢3归零 (0->1, 1->2, 2->0)
             currentLangIdx = (currentLangIdx + 1) % 3; 
             const targetLang = langMap[currentLangIdx];
             
-            // 更改按钮文字，提示用户再次点击会切换到什么语言
             document.getElementById('lang-btn').textContent = nextLangLabel[currentLangIdx];
             
-            // 批量替换网页中的所有多语言文本
             document.querySelectorAll('.lang-text').forEach(el => {
                 el.textContent = el.getAttribute(`data-${targetLang}`);
             });
