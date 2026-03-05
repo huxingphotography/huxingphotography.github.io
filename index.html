@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hu Xing Photography. Documentary and portrait photographer based on film. 胡星摄影，专注于人文纪实与人像的胶片摄影师。">
     <title>Hu Xing Photography | 胡星摄影</title>
-    <!-- 引入全套高级字体：全面拥抱 Serif (衬线/宋体) 以获得极致典雅的画廊感 -->
+    
+    <!-- === 核心升级：网页标签小图标 (Favicon) === -->
+    <link rel="icon" href="logo/huxingphoto.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="logo/huxingphoto.png">
+
+    <!-- 引入全套高级字体 -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Noto+Serif+SC:wght@300;400;700&family=Noto+Serif+TC:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         /* 基础变量设置（白昼模式） */
@@ -16,7 +21,7 @@
             --border-color: #E0E0E0;
             --slider-bg: #EAEAEA;
             --font-title: 'Playfair Display', 'Noto Serif SC', 'Noto Serif TC', serif;
-            --font-body: 'Montserrat', 'Noto Serif SC', 'Noto Serif TC', serif; /* 正文也换成了宋体/衬线体 */
+            --font-body: 'Montserrat', 'Noto Serif SC', 'Noto Serif TC', serif;
             --transition: all 0.4s ease;
         }
 
@@ -35,15 +40,14 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-body);
-            font-weight: 300; /* 使用轻量级字体，带来极致空气感 */
-            letter-spacing: 0.8px; /* 稍微增加字间距 */
-            line-height: 2.0; /* 增加行高，提升阅读的诗意感 */
+            font-weight: 300; 
+            letter-spacing: 0.8px; 
+            line-height: 2.0; 
             transition: var(--transition);
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden; 
         }
 
-        /* 强制覆盖标题字体 */
         h1, h2, h3, .serif { font-family: var(--font-title); font-weight: 400; letter-spacing: 1.5px; }
 
         /* 导航栏 */
@@ -60,8 +64,30 @@
             display: flex; justify-content: space-between; align-items: center;
         }
 
-        .logo { font-size: 1.5rem; letter-spacing: 2px; cursor: pointer; }
+        /* === 核心升级：Logo容器与图片适配 === */
+        .brand-container {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .brand-container:hover { opacity: 0.7; }
+        
+        .brand-icon {
+            height: 32px; /* 完美契合文字高度 */
+            width: auto;
+            margin-right: 15px; /* 图片与文字的间距 */
+            object-fit: contain;
+            transition: var(--transition);
+        }
+        
+        /* 💡 提示：如果你的Logo是纯黑色的，在黑夜模式下会看不见。
+           如果你需要它在黑夜模式自动反色变成白色，请把下面这一行代码最前面的 `/*` 删掉！ */
+        [data-theme="dark"] .brand-icon { filter: invert(1) hue-rotate(180deg); } 
 
+        .logo { font-size: 1.5rem; letter-spacing: 2px; }
+
+        /* 导航链接 */
         .nav-links { display: flex; gap: 2.5rem; list-style: none; font-family: 'Montserrat', 'Noto Serif SC', serif; }
         .nav-links li { cursor: pointer; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.3s; font-weight: 400; }
         .nav-links li:hover { color: var(--secondary-text); }
@@ -70,62 +96,35 @@
         /* 控制区：主题切换与语言滑动条 */
         .controls { display: flex; gap: 1.5rem; align-items: center; }
         
-        /* 语言滑动胶囊条 */
         .lang-switch {
-            position: relative;
-            display: flex;
-            background-color: var(--slider-bg);
-            border-radius: 20px;
-            padding: 3px;
-            align-items: center;
-            width: 140px; 
-            transition: var(--transition);
+            position: relative; display: flex; background-color: var(--slider-bg);
+            border-radius: 20px; padding: 3px; align-items: center;
+            width: 140px; transition: var(--transition);
             font-family: 'Montserrat', 'Noto Serif SC', serif;
         }
         
         .lang-slider {
-            position: absolute;
-            top: 3px; left: 3px;
-            width: calc(33.33% - 2px);
-            height: calc(100% - 6px);
-            background-color: var(--text-color);
-            border-radius: 15px;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s;
-            z-index: 1;
+            position: absolute; top: 3px; left: 3px; width: calc(33.33% - 2px); height: calc(100% - 6px);
+            background-color: var(--text-color); border-radius: 15px;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s; z-index: 1;
         }
 
         .lang-option {
-            position: relative;
-            z-index: 2;
-            flex: 1;
-            text-align: center;
-            font-size: 0.75rem;
-            cursor: pointer;
-            color: var(--secondary-text);
-            transition: color 0.3s;
-            padding: 3px 0;
-            user-select: none;
-            font-weight: 400;
-            letter-spacing: 1px;
+            position: relative; z-index: 2; flex: 1; text-align: center; font-size: 0.75rem;
+            cursor: pointer; color: var(--secondary-text); transition: color 0.3s;
+            padding: 3px 0; user-select: none; font-weight: 400; letter-spacing: 1px;
         }
-        
         .lang-option.active { color: var(--bg-color); font-weight: 600; }
 
-        /* 主题切换图标按钮 */
         .theme-btn {
-            background: none; border: none; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-color); padding: 0.2rem;
+            background: none; border: none; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; color: var(--text-color); padding: 0.2rem;
         }
-        .theme-btn svg {
-            width: 20px; height: 20px;
-            stroke: var(--text-color); stroke-width: 1.2;
-            transition: transform 0.5s ease, opacity 0.3s ease;
-        }
+        .theme-btn svg { width: 20px; height: 20px; stroke: var(--text-color); stroke-width: 1.2; transition: transform 0.5s ease, opacity 0.3s ease; }
         .theme-btn:hover svg { opacity: 0.6; transform: rotate(15deg); }
 
         /* 主体内容 */
-        main { max-width: 1200px; margin: 120px auto 0; padding: 0 2rem; min-height: calc(100vh - 200px); }
+        main { max-width: 1200px; margin: 150px auto 0; padding: 0 2rem; min-height: calc(100vh - 200px); }
         .section { display: none; animation: fadeIn 0.8s ease; padding-bottom: 4rem; }
         .section.active { display: block; }
 
@@ -146,36 +145,13 @@
         .gallery-category h3 { font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 0.3rem; }
         .category-desc { font-size: 0.85rem; color: var(--secondary-text); letter-spacing: 1px; }
 
-        /* 瀑布流核心代码 */
-        .gallery-grid {
-            column-count: 3;
-            column-gap: 20px;
-        }
-        
-        .gallery-item {
-            position: relative; 
-            break-inside: avoid; 
-            margin-bottom: 20px; 
-            background-color: var(--border-color); 
-            cursor: pointer;
-            overflow: hidden; 
-        }
-        
-        .gallery-item img {
-            width: 100%; 
-            height: auto; 
-            display: block; 
-            transition: transform 0.8s ease;
-        }
-
+        /* 瀑布流 */
+        .gallery-grid { column-count: 3; column-gap: 20px; }
+        .gallery-item { position: relative; break-inside: avoid; margin-bottom: 20px; background-color: var(--border-color); cursor: pointer; overflow: hidden; }
+        .gallery-item img { width: 100%; height: auto; display: block; transition: transform 0.8s ease; }
         .gallery-overlay {
-            position: absolute; bottom: 0; left: 0; right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-            color: #FFFFFF; padding: 20px;
-            opacity: 0; transition: opacity 0.4s ease;
-            display: flex; align-items: flex-end; 
-            height: 120px;
-            pointer-events: none; 
+            position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: #FFFFFF; padding: 20px; opacity: 0; transition: opacity 0.4s ease; display: flex; align-items: flex-end; height: 120px; pointer-events: none; 
         }
         .gallery-item:hover img { transform: scale(1.03); }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
@@ -184,51 +160,37 @@
         /* 联系页版块 */
         .contact-container { text-align: center; max-width: 600px; margin: 4rem auto 0; padding: 4rem 0; }
         .contact-container h2 { font-size: 2.5rem; margin-bottom: 2rem; }
-        .email-link {
-            font-size: 1.5rem; color: var(--text-color); text-decoration: none;
-            border-bottom: 1px solid var(--text-color); padding-bottom: 5px; transition: color 0.3s;
-            font-family: var(--font-title);
-        }
+        .email-link { font-size: 1.5rem; color: var(--text-color); text-decoration: none; border-bottom: 1px solid var(--text-color); padding-bottom: 5px; transition: color 0.3s; font-family: var(--font-title); }
         .email-link:hover { color: var(--secondary-text); border-color: var(--secondary-text); }
 
         /* 页脚 */
-        footer { 
-            width: 100%; display: flex; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif;
-            padding: 3rem 1rem; font-size: 0.8rem; color: var(--secondary-text); 
-            letter-spacing: 1.5px; clear: both; border-top: 1px solid var(--border-color); margin-top: 2rem;
-        }
+        footer { width: 100%; display: flex; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif; padding: 3rem 1rem; font-size: 0.8rem; color: var(--secondary-text); letter-spacing: 1.5px; clear: both; border-top: 1px solid var(--border-color); margin-top: 2rem; }
 
         /* 响应式：平板端 */
-        @media (max-width: 1024px) {
-            .gallery-grid { column-count: 2; } 
-        }
+        @media (max-width: 1024px) { .gallery-grid { column-count: 2; } }
 
         /* =========================================
-           移动端终极完美适配方案 (解决重叠与被遮挡问题)
+           移动端终极完美适配方案
            ========================================= */
         @media (max-width: 768px) {
-            /* 1. 双层分离网格 */
-            .nav-container { 
-                display: grid; 
-                grid-template-columns: 1fr auto; 
-                row-gap: 1.2rem; 
-                padding: 1.2rem 1.5rem; 
-            }
-            .logo { grid-column: 1 / 2; align-self: center; font-size: 1.35rem; }
+            .nav-container { display: grid; grid-template-columns: 1fr auto; row-gap: 1.2rem; padding: 1.2rem 1.5rem; }
+            
+            /* Logo容器在移动端的精细调整 */
+            .brand-container { grid-column: 1 / 2; align-self: center; }
+            .brand-icon { height: 24px; margin-right: 10px; }
+            .logo { font-size: 1.35rem; }
+
             .controls { grid-column: 2 / 3; align-self: center; gap: 0.8rem; }
             .nav-links { grid-column: 1 / 3; justify-content: center; gap: 2rem; }
             
-            /* 2. 关键修复：大幅度增加下推距离，确保无论怎样都不挡住标题 */
-            main { margin-top: 160px; padding: 0 1.5rem; }
+            /* 🚀 核心修复：大幅度增加下推距离（从160px增加至220px），留下绝对安全的呼吸空间！ */
+            main { margin-top: 220px; padding: 0 1.5rem; }
             
-            /* 移动端细节微调 */
             .bio h2 { font-size: 1.8rem; }
             .contact-container h2 { font-size: 1.8rem; }
             .email-link { font-size: 1.1rem; }
             .gallery-grid { column-count: 1; } 
             .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); }
-            
-            /* 缩小移动端语言滑动条以留出充足空间 */
             .lang-switch { width: 105px; }
             .lang-option { font-size: 0.65rem; padding: 2px 0; }
         }
@@ -238,12 +200,19 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo serif lang-text" onclick="switchTab('home')" data-sc="胡 星" data-tc="胡 星" data-en="HU XING">胡 星</div>
+            <!-- 品牌 Logo 容器：结合了图片与文字，点击均可回到首页 -->
+            <!-- onerror 确保了如果图片路径没填对，网页也不会出现难看的裂图符号 -->
+            <div class="brand-container" onclick="switchTab('home')">
+                <img src="logo/huxingphoto.png" alt="Hu Xing Logo" class="brand-icon" onerror="this.style.display='none'">
+                <div class="logo serif lang-text" data-sc="胡 星" data-tc="胡 星" data-en="HU XING">胡 星</div>
+            </div>
+
             <ul class="nav-links">
                 <li onclick="switchTab('home')" id="tab-home" class="active lang-text" data-sc="关于" data-tc="關於" data-en="About">关于</li>
                 <li onclick="switchTab('gallery')" id="tab-gallery" class="lang-text" data-sc="作品" data-tc="作品" data-en="Portfolio">作品</li>
                 <li onclick="switchTab('contact')" id="tab-contact" class="lang-text" data-sc="联系" data-tc="聯繫" data-en="Contact">联系</li>
             </ul>
+
             <div class="controls">
                 <button onclick="toggleTheme()" class="theme-btn" aria-label="Toggle Dark/Light Mode">
                     <svg id="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
