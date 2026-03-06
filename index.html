@@ -147,6 +147,21 @@
         .email-link { font-size: 1.5rem; color: var(--text-color); text-decoration: none; border-bottom: 1px solid var(--text-color); padding-bottom: 5px; transition: color 0.3s; font-family: var(--font-title); }
         .email-link:hover { color: var(--secondary-text); border-color: var(--secondary-text); }
 
+        /* ====== 全新：社交媒体胶囊按钮 ====== */
+        .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 4rem; flex-wrap: wrap; }
+        .social-btn {
+            display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 1.6rem;
+            border: 1px solid var(--border-color); border-radius: 30px;
+            color: var(--text-color); text-decoration: none; font-size: 0.85rem;
+            transition: var(--transition); font-family: 'Montserrat', 'Noto Serif SC', serif;
+            letter-spacing: 1px;
+        }
+        .social-btn:hover {
+            background-color: var(--text-color); color: var(--bg-color);
+            border-color: var(--text-color); transform: translateY(-3px);
+        }
+        .social-btn svg { width: 16px; height: 16px; stroke-width: 1.5; }
+
         /* 页脚 */
         footer { width: 100%; display: flex; justify-content: center; align-items: center; font-family: 'Montserrat', sans-serif; padding: 3rem 1rem; font-size: 0.8rem; color: var(--secondary-text); letter-spacing: 1.5px; clear: both; border-top: 1px solid var(--border-color); margin-top: 2rem; }
 
@@ -171,6 +186,10 @@
             .gallery-overlay { opacity: 1; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); }
             .lang-switch { width: 105px; }
             .lang-option { font-size: 0.65rem; padding: 2px 0; }
+            
+            /* 手机端社交按钮变为全宽列表排列，非常高级 */
+            .social-links { flex-direction: column; gap: 1rem; margin-top: 3.5rem; }
+            .social-btn { padding: 0.9rem; justify-content: center; font-size: 0.9rem; border-radius: 12px; }
         }
     </style>
 </head>
@@ -272,7 +291,6 @@
             </div>
 
             <div class="gallery-grid">
-                <!-- 这里的照片显示名称已为你去除了括号 -->
                 <div class="gallery-item">
                     <img src="photos/Sydney/1%20Threshold%20(Childhood).jpg" alt="Threshold - 2025 Sydney documentary photography, color negative film - Hu Xing Photography. Shot on Hasselblad 500C/M.">
                     <div class="gallery-overlay"><span class="gallery-title">Threshold</span></div>
@@ -310,7 +328,6 @@
             </div>
 
             <div class="gallery-grid">
-                <!-- 注意：这里的 .jpeg 和 .jpg 后缀是严格根据你截图的推测填写的，若裂图请检查真实扩展名 -->
                 <div class="gallery-item">
                     <img src="photos/Hong%20Kong%20SAR/A%20Hundred%20Year%20of%20the%20Green.jpeg" alt="A Hundred Year of the Green - Hong Kong urban documentary photography - Hu Xing.">
                     <div class="gallery-overlay"><span class="gallery-title">A Hundred Year of the Green</span></div>
@@ -345,6 +362,40 @@
                 <h2 class="serif lang-text" data-sc="期待与您的合作" data-tc="期待與您的合作" data-en="Let's create together">期待与您的合作</h2>
                 <p style="margin-bottom: 3rem; color: var(--secondary-text);" class="lang-text" data-sc="无论是项目委托、作品购买还是交流探讨，欢迎随时通过邮件与我联系。" data-tc="無論是項目委託、作品購買還是交流探討，歡迎隨時透過郵件與我聯繫。" data-en="Available for commissions, print sales, and collaborations. Feel free to reach out via email.">无论是项目委托、作品购买还是交流探讨，欢迎随时通过邮件与我联系。</p>
                 <a href="mailto:huxingphotography@outlook.com" class="email-link">huxingphotography@outlook.com</a>
+
+                <!-- ====== 核心更新：社交媒体矩阵 ====== -->
+                <div class="social-links">
+                    
+                    <!-- Instagram: 相机图标 -->
+                    <a href="https://www.instagram.com/huxing_photography/" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>Instagram</span>
+                    </a>
+
+                    <!-- 小红书: 书本图标 (Little Red Book) -->
+                    <a href="https://www.xiaohongshu.com/user/profile/5ece76e2000000000101fc29" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                        <span class="lang-text" data-sc="小红书" data-tc="小紅書" data-en="RED">小红书</span>
+                    </a>
+
+                    <!-- 百度百科: 权威网络/地球图标 -->
+                    <a href="https://baike.baidu.com/item/%E8%83%A1%E6%98%9F/66938020?fromModule=disambiguation" target="_blank" class="social-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                        <span class="lang-text" data-sc="百度百科" data-tc="百度百科" data-en="Baidu Baike">百度百科</span>
+                    </a>
+                </div>
+
             </div>
         </section>
     </main>
